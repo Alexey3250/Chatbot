@@ -1,0 +1,11 @@
+version: 'version: 3'
+
+services:
+
+  web:
+    build: .
+    command: sh -c "hypercorn main:app --reload --port=8000 --host=0.0.0.0"
+    ports:
+      - 8080:8000
+    volumes:
+      - .:/app
