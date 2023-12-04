@@ -1,29 +1,57 @@
----
-title: FastAPI
-description: A FastAPI server
-tags:
-  - fastapi
-  - hypercorn
-  - python
----
+# Асинхронный API с FastAPI и OpenAI
 
-# FastAPI Example
+Суммаризирует полученную переписку с клиентом и отправляет ее обратно.
 
-This example starts up a [FastAPI](https://fastapi.tiangolo.com/) server.
+<img src="https://camo.githubusercontent.com/e8af3e348afc071756a11eec7d4877a762613a3b4eb94192c9b7babae7ea7499/68747470733a2f2f692e696d6775722e636f6d2f334e515a5244672e706e67" >
 
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/-NvLj4?referralCode=CRJ8FE)
-## ✨ Features
+## Начало работы
 
-- FastAPI
-- [Hypercorn](https://hypercorn.readthedocs.io/)
-- Python 3
+Прежде всего, убедитесь, что у вас установлены Python и pip. Но, конечно, у вас они уже установлены, не так ли? Ведь кто в наши дни не использует Python!
 
-## 💁‍♀️ How to use
+### Установка зависимостей
 
-- Clone locally and install packages with pip using `pip install -r requirements.txt`
-- Run locally using `hypercorn main:app --reload`
+Для установки этих удивительно уникальных зависимостей просто запустите:
 
-## 📝 Notes
+```bash
+pip install -r requirements.txt
+```
 
-- To learn about how to use FastAPI with most of its features, you can visit the [FastAPI Documentation](https://fastapi.tiangolo.com/tutorial/)
-- To learn about Hypercorn and how to configure it, read their [Documentation](https://hypercorn.readthedocs.io/)
+Это действительно неожиданный шаг в процессе установки, верно?
+
+### Запуск сервера
+
+Запустите сервер, выполнив следующую магическую команду:
+
+```bash
+uvicorn main:app --reload
+```
+
+А вот и наш великолепный сервер готов к работе! О, какое волнение!
+
+## Использование API
+
+Для взаимодействия с API вы можете использовать любой инструмент, который отправляет HTTP-запросы. Но мы знаем, что вы выберете Postman, потому что это так оригинально.
+
+### Пример запроса
+
+Следующий TypeScript код покажет вам, как это делается (но, конечно, вы и сами это знаете):
+
+```typescript
+import axios from 'axios';
+
+const response = await axios.post('http://127.0.0.1:8000/summarise/', {
+    message: "Кидаем стринг со всеми сообщениями суда"
+});
+console.log(response.data);
+```
+
+Или, если вы предпочитаете Python (какой сюрприз!), вот пример:
+
+```python
+import requests
+
+response = requests.post('http://127.0.0.1:8000/summarise/', json={"message": "Кидаем стринг со всеми сообщениями суда"})
+print(response.json())
+```
+
+Ну и, разумеется, Postman. Просто вставьте URL и данные. Это так сложно, не правда ли?
