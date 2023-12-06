@@ -10,7 +10,7 @@ from pydantic import BaseModel
 app = FastAPI()
 
 # Загрузка ключа API OpenAI из переменных окружения
-openai_api_key = os.getenv("OPENAI_API_KEY")
+openai_api_key = "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"
 openai.api_key = openai_api_key
 
 # Модель Pydantic для данных запроса на суммаризацию
@@ -26,8 +26,8 @@ class ChatRequest(BaseModel):
 async def perform_summarization(message: str):
     print("Starting summarisation process...")
     
-    openai_api_key = os.getenv("OPENAI_API_KEY")
-    client = openai.Client(api_key=openai_api_key)
+    client = openai.Client()
+    assistant_id = "asst_CjvyFIeraCLKB8NTAqF0FhqG"
 
     # Run blocking operations in a background thread
     thread = await asyncio.to_thread(client.beta.threads.create)
