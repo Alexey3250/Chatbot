@@ -1,15 +1,12 @@
+import asyncio
+import os
+
+import openai
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-import openai
-import os
-import asyncio
 
-
+# Инициализация приложения FastAPI
 app = FastAPI()
-
-@app.get("/")
-async def root():
-    return {"greeting": "Hello, World!", "message": "Welcome to FastAPI!"}
 
 # Загрузка ключа API OpenAI из переменных окружения
 openai_api_key = os.getenv("OPENAI_API_KEY")
@@ -102,6 +99,11 @@ async def send_message_get_reply(message: str, thread_id: str | None):
     last_message = next((m.content[0].text.value for m in messages.data if m.role == "assistant" and m.content), None)
     return last_message, thread_id
 
+# Конечная точка для проверки работоспособности
+@app.get("/")
+async def root():
+    return {"message": "Да вроди работает"}
+
 # Конечная точка для суммаризации
 @app.post("/summarize/")
 async def summarize(request: SummarizeRequest):
@@ -115,3 +117,7 @@ async def chat(request: ChatRequest):
     if response is None:
         raise HTTPException(status_code=500, detail="Не удалось получить ответ от помощника")
     return {"response": response, "thread_id": thread_id}
+
+# Запуск приложения FastAPI с Uvicorn
+# Обычно эту команду вызывают из командной строки
+# uvicorn.run(app, host="0.0.0.0", port=8000)

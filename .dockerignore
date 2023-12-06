@@ -1,6 +1,0 @@
-env/
-__pychche__/
-
-*.env
-*.env.*
-env.*
