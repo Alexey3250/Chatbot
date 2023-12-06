@@ -1,5 +1,6 @@
 import asyncio
 import os
+from typing import Union
 
 import openai
 from fastapi import FastAPI, HTTPException
@@ -19,7 +20,7 @@ class SummarizeRequest(BaseModel):
 # Модель Pydantic для данных запроса на чат
 class ChatRequest(BaseModel):
     message: str
-    thread_id: str | None = None
+    thread_id: Union[str, None] = None
 
 # Функция для выполнения суммаризации (асинхронная)
 async def perform_summarization(message: str):
@@ -76,7 +77,7 @@ async def perform_summarization(message: str):
 
 
 # Функция для отправки сообщения и получения ответа в чате (асинхронная)
-async def send_message_get_reply(message: str, thread_id: str | None):
+async def send_message_get_reply(message: str, thread_id: Union[str, None]):
     client = openai.Client(api_key=openai_api_key)
     assistant_id = "asst_CjvyFIeraCLKB8NTAqF0FhqG"  # ID вашего помощника
 
