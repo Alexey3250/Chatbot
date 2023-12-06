@@ -10,7 +10,7 @@ from pydantic import BaseModel
 app = FastAPI()
 
 # Загрузка ключа API OpenAI из переменных окружения
-openai_api_key = os.getenv("OPENAI_API_KEY")
+openai_api_key = "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"
 openai.api_key = openai_api_key
 
 # Модель Pydantic для данных запроса на суммаризацию
