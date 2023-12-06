@@ -9,6 +9,6 @@
       "sleepApplication": false,
       "restartPolicyType": "ON_FAILURE",
       "restartPolicyMaxRetries": 10,
-      "startCommand": "uvicorn main:app --reload --host=0.0.0.0 --port=3000"
+      "startCommand": "uvicorn main:app --reload --port=3000"
     }
   }
