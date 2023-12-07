@@ -52,7 +52,7 @@ async def perform_summarization(message: str):
 
     start_time = asyncio.get_event_loop().time()
     while True:
-        if asyncio.get_event_loop().time() - start_time > 7:
+        if asyncio.get_event_loop().time() - start_time > 15:
             print("Run did not complete in time.")
             raise HTTPException(status_code=500, detail="Run did not complete in time.")
         
