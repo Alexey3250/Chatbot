@@ -9,8 +9,10 @@ from pydantic import BaseModel
 # Инициализация приложения FastAPI
 app = FastAPI()
 
-# Загрузка ключа API OpenAI из переменных окружения
-openai_api_key = "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"
+# Load OpenAI API key from environment variables
+openai_api_key = os.getenv("OPENAI_API_KEY")
+if openai_api_key is None:
+    raise ValueError("No OpenAI API key set in environment variables")
 openai.api_key = openai_api_key
 
 # Модель Pydantic для данных запроса на суммаризацию
